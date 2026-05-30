@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Serwis Komputerowy Adam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="startStrony()">
+
+    <header id="naglowek">
+        <h1>Serwis Komputerowy Adam</h1>
+        <p>Naprawa komputerów, laptopów i telefonów</p>
+    </header>
+
+<body onload="startStrony()">
+
+
+    <main>
+
+        <section class="blok">
+            <h2>Hasło dnia</h2>
+            <p id="hasloDnia"></p>
+        </section>
+
+        <section class="blok">
+            <h2>Nasze usługi</h2>
+            <ul id="listaUslug"></ul>
+        </section>
+
+        <section class="blok">
+            <h2>Logowanie klienta</h2>
+
+            <label>Podaj login:</label>
+            <input type="text" id="login" placeholder="np. Adam">
+
+            <button onclick="zaloguj()">Zaloguj się</button>
+
+            <p id="komunikatLogowania"></p>
+        </section>
+
+        <section class="blok" id="formularzWizyty">
+            <h2>Umów wizytę</h2>
+
+            <label>Wybierz usługę:</label>
+            <select id="wyborUslugi"></select>
+
+            <label>Wybierz datę wizyty:</label>
+            <input type="date" id="dataWizyty">
+
+            <button onclick="umowWizyte()">Umów wizytę</button>
+
+            <p id="komunikatWizyty"></p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Autor: Adam | Projekt HTML, CSS i JavaScript</p>
+    </footer>
+
+    <script>
+        var uslugi = [
+            "Czyszczenie laptopa z kurzu",
+            "Instalacja systemu Windows",
+            "Wymiana dysku na SSD",
+            "Usuwanie wirusów",
+            "Naprawa gniazda ładowania",
+            "Składanie komputera",
+            "Wymiana pasty termoprzewodzącej"
+        ];
+
+        var hasla = [
+            "Komputer działa najlepiej, gdy jest regularnie czyszczony.",
+            "Dysk SSD może znacznie przyspieszyć starszy komputer.",
+            "Nie warto odkładać kopii zapasowej na później.",
+            "Aktualny antywirus to podstawa bezpieczeństwa.",
+            "Dobra diagnoza to połowa naprawy."
+        ];
+
+        function startStrony() {
+            ustawLosowyKolor();
+            pokazUslugi();
+            pokazHasloDnia();
+
+            document.getElementById("formularzWizyty").style.display = "none";
+        }
+
+        function ustawLosowyKolor() {
+            var kolory = ["#2c3e50", "#006666", "#663333", "#336633", "#333366"];
+            var losowyNumer = Math.floor(Math.random() * kolory.length);
+
+            document.getElementById("naglowek").style.backgroundColor = kolory[losowyNumer];
+        }
+
+        function pokazUslugi() {
+            var lista = document.getElementById("listaUslug");
+            var select = document.getElementById("wyborUslugi");
+
+            for (var i = 0; i < uslugi.length; i++) {
+                var punkt = document.createElement("li");
+                punkt.innerHTML = uslugi[i];
+                lista.appendChild(punkt);
+
+                var opcja = document.createElement("option");
+                opcja.innerHTML = uslugi[i];
+                opcja.value = uslugi[i];
+                select.appendChild(opcja);
+            }
+        }
+
+        function pokazHasloDnia() {
+            var numer = Math.floor(Math.random() * hasla.length);
+            document.getElementById("hasloDnia").innerHTML = hasla[numer];
+        }
+
+        function zaloguj() {
+            var login = document.getElementById("login").value;
+            var komunikat = document.getElementById("komunikatLogowania");
+
+            if (login == "") {
+                komunikat.style.color = "red";
+                komunikat.innerHTML = "Uzupełnij poprawnie formularz logowania.";
+            } else {
+                komunikat.style.color = "green";
+                komunikat.innerHTML = "Witaj " + login + "! Możesz teraz umówić wizytę.";
+
+                document.getElementById("formularzWizyty").style.display = "block";
+            }
+        }
+
+        function umowWizyte() {
+            var usluga = document.getElementById("wyborUslugi").value;
+            var data = document.getElementById("dataWizyty").value;
+            var komunikat = document.getElementById("komunikatWizyty");
+
+            if (data == "") {
+                komunikat.style.color = "red";
+                komunikat.innerHTML = "Wybierz datę wizyty.";
+            } else {
+                komunikat.style.color = "green";
+                komunikat.innerHTML = "Umówiono wizytę na dzień " + data + ". Wybrana usługa: " + usluga + ".";
+            }
+        }
+    </script>
+
+</body>
+</html>
+``
