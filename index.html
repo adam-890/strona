@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serwis Komputerowy Adam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="naglowek">
+        <h1>Serwis Komputerowy Adam</h1>
+        <p>Szybka naprawa komputerów, laptopów i telefonów</p>
+    </header>
+
+    <main>
+        <section class="blok">
+            <h2>Hasło dnia</h2>
+            <p id="hasloDnia">Tutaj pojawi się losowe hasło.</p>
+        </section>
+
+        <section class="blok">
+            <h2>Nasze usługi</h2>
+            <ul id="listaUslug"></ul>
+        </section>
+
+        <section class="blok">
+            <h2>Logowanie klienta</h2>
+            <label for="login">Podaj login:</label>
+            <input type="text" id="login" placeholder="np. Adam">
+            <button onclick="zalogujUzytkownika()">Zaloguj się</button>
+            <p id="komunikatLogowania"></p>
+        </section>
+
+        <section class="blok ukryty" id="formularzWizyty">
+            <h2>Umów wizytę</h2>
+            <label for="usluga">Wybierz usługę:</label>
+            <select id="usluga"></select>
+
+            <label for="dataWizyty">Wybierz datę:</label>
+            <input type="date" id="dataWizyty">
+
+            <button onclick="umowWizyte()">Umów wizytę</button>
+            <p id="komunikatWizyty"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Autor: Adam Dudek | Projekt strony HTML, CSS i JavaScript</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
