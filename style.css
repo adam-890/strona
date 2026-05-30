@@ -66,12 +66,12 @@ button:hover {
     background-color: #555599;
 }
 
-#komunikatLogowania, #komunikatWizyty {
+#komunikatLogowania {
     font-weight: bold;
 }
 
-.ukryty {
-    display: none;
+#komunikatWizyty {
+    font-weight: bold;
 }
 
 footer {
